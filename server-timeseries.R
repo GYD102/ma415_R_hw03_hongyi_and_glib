@@ -1,4 +1,4 @@
-ts<-read.csv("data/PB monthly summaries.csv")
+ts<-read.csv("PB monthly summaries.csv")
 rownames(ts) <- ts[,1]
 #rearrange the dataframe, sort it with respect to year from 2000 to 2017
 ts <- ts[ order(ts$year) , ]
