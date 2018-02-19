@@ -17,9 +17,9 @@ ts<-ts[,c("January",
           "October",
           "November",
           "December")]
-ts_df <- ts
-ts <- as.vector(t(ts))
-ts_avg <- apply(ts_df,1,mean)
+#ts_df <- ts
+#ts <- as.vector(t(ts))
+#ts_avg <- apply(ts_df,1,mean)
 
 library(shiny)
 
@@ -37,7 +37,7 @@ ui <- fluidPage(
     sidebarPanel(
       sliderInput("max", 
                   label = "Range of year:",
-                  min = 2000, max = 2017, value = 2017),
+                  min = 2000, max = 2017, value = c(2000,2017)),
       hr(),
       helpText("Please select the range of year.")
     ),
@@ -54,8 +54,14 @@ server <- function(input, output) {
    
   # Fill in the spot we created for a plot
   output$graph <- renderPlot({
-    ts <- ts(ts , start = 2000 , end=c(input$max,12) , frequency=12)
-    ts_avg <- ts(ts_avg , start = 2000 , end=c(input$max) , frequency=1)
+    #change
+    ts <- ts[(input$max[1]-1999):18,]
+    ts_df <- ts
+    ts <- as.vector(t(ts))
+    ts_avg <- apply(ts_df,1,mean)
+      
+    ts <- ts(ts , start = c(input$max[1],1) , end=c(input$max[2],12) , frequency=12)
+    ts_avg <- ts(ts_avg , start = c(input$max[1]) , end=c(input$max[2]) , frequency=1)
     
     # Render a barplot
     ts.plot(ts, 
@@ -91,4 +97,6 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
+
 
