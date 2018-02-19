@@ -10,6 +10,11 @@ year2010 <- read.csv("BP Apprehensions 2010.csv")
 year2017 <- read.csv("PB Apprehensions 2017.csv")
 year2010 <- rowname(year2010)
 year2017 <- rowname(year2017)
+
+# Rearranging Columns into calendar order
+year2010 <- cbind(year2010[4:12], year2010[1:3])
+year2017 <- cbind(year2017[4:12], year2017[1:3])
+
 sector <- rownames(year2010)
 month <- colnames(year2010)
 
@@ -40,7 +45,7 @@ library(shiny)
 ui <- fluidPage(
    
   # Give the page a title
-  titlePanel("Aprehension in US-Mexico border between 2010 and 2017"),
+  titlePanel("Apprehension on the US-Mexico border between 2010 and 2017"),
   
   # Generate a row with a sidebar
   sidebarLayout(      

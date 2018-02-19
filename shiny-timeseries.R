@@ -28,7 +28,7 @@ ui <- fluidPage(
    
   
   # Give the page a title
-  titlePanel("Aprehension in US-Mexico border"),
+  titlePanel("Apprehensions on the US-Mexico Border"),
   
   # Generate a row with a sidebar
   sidebarLayout(      
@@ -37,7 +37,8 @@ ui <- fluidPage(
     sidebarPanel(
       sliderInput("max", 
                   label = "Range of year:",
-                  min = 2000, max = 2017, value = 2017),
+                  min = 2000, max = 2017, value = c(2000,2017),
+                  sep = ""),
       hr(),
       helpText("Please select the range of year.")
     ),
@@ -54,8 +55,8 @@ server <- function(input, output) {
    
   # Fill in the spot we created for a plot
   output$graph <- renderPlot({
-    ts <- ts(ts , start = 2000 , end=c(input$max,12) , frequency=12)
-    ts_avg <- ts(ts_avg , start = 2000 , end=c(input$max) , frequency=1)
+    ts <- ts(ts , start = input$max[1] , end=c(input$max[2],12) , frequency=12)
+    ts_avg <- ts(ts_avg , start = input$max[1] , end=c(input$max[2]) , frequency=1)
     
     # Render a barplot
     ts.plot(ts, 
@@ -63,7 +64,7 @@ server <- function(input, output) {
             xlab="year", 
             ylab="Apprehensions", 
             lty=c(1:3), 
-            main =paste("Apprehension from 2000 to",input$max))
+            main =paste("Apprehension from ", input$max[1], " to ",input$max[2]))
     points(ts_avg,col = 4,pch=20)
     lines(ts_avg,col = 4,pch=20,lty=2)
     
