@@ -10,7 +10,9 @@ runtime: shiny
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Comparing Sectors
+#Comparing Apprehensions
+
+## By Month
 
 ```{r, echo=FALSE}
 shinyAppFile(
@@ -21,7 +23,7 @@ shinyAppFile(
 )
 ```
 
-## T-Test
+## By Sector
 
 ```{r, echo=FALSE}
 shinyAppFile(
@@ -32,7 +34,7 @@ shinyAppFile(
 )
 ```
 
-## Time Series
+# Time Series
 
 ```{r, echo=FALSE}
 shinyAppFile(
