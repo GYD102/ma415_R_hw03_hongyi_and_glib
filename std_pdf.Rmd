@@ -12,36 +12,38 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 ## 1.Introduction
 
-## 2.Comparation between 2010 and 2017
+In this document, we provide several graphs for comparing US-Mexico border apprehension data. First, you will see charts that facilitate comparison of apprehension data in each sector and for each month during the years of 2010 and 2017. Next, we provide two t-tests analyzing the same data. Finally, we drive a time-series and averages of total apprehensions across all sectors from 2000 to 2017. For all segments, we include the R code that was used to compare and plot the data.
+
+## 2.Comparison between 2010 and 2017
 
 ```{r, code=readLines("part1_comparison.R")}
 ```
 
 ##2.1
-## 3.The statistical tests between 2010 and 2017
+## 3. Statistical testing on data from 2010 and 2017
 
-### T-test Results and Interpretations
+### T-test Results and Interpretation
 
-#### 3.1 T-test between the sector with the most apprehensions in 2010 and 2017
+#### 3.1 T-test between sectors with the most apprehensions in 2010 and 2017
 ```{r pressure, code = readLines("part2_t-test.R")[1:34]}
 ```
 t test result: p= 0.1061 > 0.05  
 
-Explaination: We know that the sector with most apprehension in 2010 is Tucson and the sector with most apprehension in 2017 is Rio Grande Valley. From the resulr of t-test, We cannot reject the null hypothesis that the apprehension in Tucson in 2010 has equal estimated means as Rio Grande Valley in 2017. Though the sector with most apprehension changed, but the number of most apprehension doesn't change.
+Explanation: We know that the sector with most apprehension in 2010 is Tucson and the sector with most apprehension in 2017 is the Rio Grande Valley. From the results of t-test, we cannot reject the null hypothesis that the apprehension in Tucson in 2010 has an equal estimated mean as Rio Grande Valley in 2017. Though the sector with the most apprehension changed from 2010 to 2017, but the maximum number of apprehension did not change.
 
 #### 3.2 T-test between the 3 month periods with the most apprehensions in 2010 and 2017
 ```{r, code = readLines("part2_t-test.R")[36:58]}
 ```
 t test result: p= 0.5904 > 0.05  
 
-Explaination: We know that the 3 month periods with the most apprehensions in 2010 is March, April and May, and the 3 month periods with the most apprehensions in 2017 is November, October, December. From the resulr of t-test, We cannot reject the null hypothesis that the apprehension in March, April and May 2010 has equal estimated means as November, October, December in 2017. Though the 3 months with most apprehension changed, but the number of most apprehension doesn't change to o much.
+Explanation: We know that the 3-month period with the most apprehensions in 2010 is March, April and May, and the 3-month period with the most apprehensions in 2017 is November, October, December. From the result of t-test, we cannot reject the null hypothesis that the apprehension during March, April and May 2010 have an equal estimated mean as November, October, December in 2017. Though the period with most apprehensions changed, the maximum number of apprehensions didn't change much.
 
 ## 4.The apprehensions change from 2000 to 2017
 ```{r, code = readLines("part3_timeseries.R")}
 ```
-  As what is shown in the graph above. Apprehensions at the US-Mexico border reached its historic lows in the 2017 and shows a downward trend since 2000. Dropping a the way from its peak of 220063 in 2000 to its bottom as 11127, nearly 2000% decline. 
+  As shown in the graph above, apprehensions at the US-Mexico border reached historic lows in 2017 and has shown a downward trend since 2000. Apprehensions have Dropped all the way from a peak of 220,063 in 2000 to a low of 11,127, a nearly 2000% decline. 
   
-  As for the annual average apprehension, we can see it has been dropped from 136973 in 2000 to 25326 in 2017. Though raised a little bit in 2005 to 97616, it went all the way down to 25326 in 2017.
+  As for average annual apprehensions, we can see they have declined from 136,973 in 2000 to 25,326 in 2017. Though the figure rose a little bit in 2005 to 97,616 , it went down to 25,326 in 2017.
   
   
 

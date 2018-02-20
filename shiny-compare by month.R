@@ -37,7 +37,7 @@ library(shiny)
 ui <- fluidPage(
    
   # Give the page a title
-  titlePanel("Apprehension on the US-Mexico border between 2010 and 2017"),
+  titlePanel("Apprehensions on the US-Mexico border in 2010 and 2017"),
   
   # Generate a row with a sidebar
   sidebarLayout(      

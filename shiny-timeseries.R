@@ -28,7 +28,7 @@ ui <- fluidPage(
    
   
   # Give the page a title
-  titlePanel("Aprehension in US-Mexico border"),
+  titlePanel("Apprehensions on the US-Mexico Border from 2000 to 2017"),
   
   # Generate a row with a sidebar
   sidebarLayout(      
@@ -36,8 +36,9 @@ ui <- fluidPage(
     # Define the sidebar with one input
     sidebarPanel(
       sliderInput("max", 
-                  label = "Range of year:",
-                  min = 2000, max = 2017, value = c(2000,2017)),
+                  label = "Year range:",
+                  min = 2000, max = 2017, value = c(2000,2017),
+                  sep = ""),
       hr(),
       helpText("Please select the range of year.")
     ),
@@ -66,10 +67,13 @@ server <- function(input, output) {
     # Render a barplot
     ts.plot(ts, 
             col = 3, 
-            xlab="year", 
+            xlab="Year", 
             ylab="Apprehensions", 
             lty=c(1:3), 
-            main =paste("Apprehension from 2000 to",input$max))
+            main =paste("Apprehensions from ",
+                        input$max[1],
+                        " to ",
+                        input$max[2]))
     points(ts_avg,col = 4,pch=20)
     lines(ts_avg,col = 4,pch=20,lty=2)
     
@@ -82,11 +86,11 @@ server <- function(input, output) {
     points(max_avg,max(ts_avg),pch=19,col=3)
     points(min_avg,min(ts_avg),pch=19,col=5)
     legend("topright", 
-           c(paste("maximum apprehension:",max(ts)," year:",floor(max_index)),
-             paste("minimum apprehension:",min(ts)," year:",floor(min_index)),
-             paste("maximum annual average apprehension:",floor(max(ts_avg))," ",floor(max_avg)),
-             paste("minimum annual average apprehension:",floor(min(ts_avg))," ",floor(min_avg)),
-             "annual average apprehension "),
+           c(paste("maximum apprehensions:",max(ts)," year:",floor(max_index)),
+             paste("minimum apprehensions:",min(ts)," year:",floor(min_index)),
+             paste("maximum annual average apprehensions:",floor(max(ts_avg))," ",floor(max_avg)),
+             paste("minimum annual average apprehensions:",floor(min(ts_avg))," ",floor(min_avg)),
+             "annual average apprehensions "),
            col = c(2,7,3,5,4),
            pch =c(19,19,19,19,20),
            lty=c(0,0,0,0,2),

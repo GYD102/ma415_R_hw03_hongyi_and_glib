@@ -1,7 +1,7 @@
 ---
 title: "Assignment No. 3"
 author: "Hongyi He, Glib Dolotov"
-date: "February 16, 2018"
+date: "February 19, 2018"
 output: 
   html_document:
     toc: true
@@ -13,6 +13,7 @@ runtime: shiny
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(shiny)
 ```
 
 # Comparing Sectors

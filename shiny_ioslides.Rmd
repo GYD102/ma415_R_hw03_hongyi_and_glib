@@ -1,7 +1,7 @@
 ---
 title: "Assignment No. 3"
 author: "Hongyi He, Glib Dolotov"
-date: "February 16, 2018"
+date: "February 19, 2018"
 output: ioslides_presentation
 runtime: shiny
 ---
@@ -34,7 +34,7 @@ shinyAppFile(
 )
 ```
 
-# Time Series
+## Time Series from 2000 to 2017
 
 ```{r, echo=FALSE}
 shinyAppFile(

@@ -35,6 +35,7 @@ x <- itemize_df(year2010,"2010")
 y <- itemize_df(year2017,"2017")
 z <- rbind(x,y)
 
+# This function creates the desired plot given a data input
 ourplot <- function(dset){
   monthOrder <- rep(1:12, times = length(dset$Month)/12)
   ggplot(data = dset, aes(reorder(Month,monthOrder),
@@ -50,13 +51,15 @@ ourplot <- function(dset){
               linetype = "dotted") + 
     theme(axis.text.x = element_text(angle = 90, hjust = 1))
 }
-
 ourplot(z)
 
+# Since it is difficult to visualize smaller data, we take a subset excluding
+# the sectors that have the most extreme apprehension tallies. This effectively
+# "zooms the graph in."
 z2 = subset(z, !(Sector %in% c("Tucson","Rio Grande Valley")))
-
 ourplot(z2)
 
+# Again we "zoom in" by excluding the sectors with the most apprehensions per
+# month.
 z3 = subset(z2, !(Sector %in% c("San Diego", "El Centro", "El Paso")))
-
 ourplot(z3)

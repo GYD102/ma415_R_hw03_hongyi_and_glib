@@ -45,7 +45,7 @@ library(shiny)
 ui <- fluidPage(
    
   # Give the page a title
-  titlePanel("Apprehension on the US-Mexico border between 2010 and 2017"),
+  titlePanel("Apprehension on the US-Mexico border in 2010 and 2017"),
   
   # Generate a row with a sidebar
   sidebarLayout(      
@@ -55,7 +55,7 @@ ui <- fluidPage(
       selectInput("region", "Sector:", 
                   choices=sector),
       hr(),
-      helpText("Please select the sector you want, compare them in different months between 2010 and 2017")
+      helpText("Please select the sector you want, we will display monthly data for 2010 and 2017")
     ),
     
     # Create a spot for the barplot
